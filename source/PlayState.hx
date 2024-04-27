@@ -1033,6 +1033,11 @@ class PlayState extends MusicBeatState
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
+	        #if android
+		addAndroidControls();
+		androidc.visible = false;
+		#end
+
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -1129,9 +1134,31 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-
-				default:
-					startCountdown();
+                                case 'the-fazbear':
+				startVideo('cutscene1f');
+				case 'broken-inside':
+				startVideo('cutscene3f');
+				case 'first-to-go':
+				startVideo('cutscene1b');
+				case 'inside-the-shell':
+				startVideo('cutscene2f');
+				case 'lost-at-sea':
+				startVideo('cutscene3p');
+				case 'midnight-snack':
+				startVideo('cutscene1c');
+				case 'one-more-bite':
+				startVideo('cutscene3c');
+				case 'pirate-adventure':
+				startVideo('cutscene1p');
+				case 'rummager':
+				startVideo('cutscene2c');
+				case 'shut-the-door':
+				startVideo('cutscene3b');
+				case 'terrorizing':
+				startVideo('cutscene2b');
+				case 'walk-the-plank':
+				startVideo('cutscene2p');
+				startCountdown();
 			}
 			seenCutscene = true;
 		} else {
@@ -1462,6 +1489,9 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 		var ret:Dynamic = callOnLuas('onStartCountdown', []);
 		if(ret != FunkinLua.Function_Stop) {
+			#if android
+			androidc.visible = true;
+			#end
 			generateStaticArrows(0);
 			generateStaticArrows(1);
 			for (i in 0...playerStrums.length) {
