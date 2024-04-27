@@ -215,9 +215,6 @@ class ChartingState extends MusicBeatState
 			addSection();
 			PlayState.SONG = _song;
 		}
-		#if MODS_ALLOWED
-		Paths.destroyLoadedImages();
-		#end
 
 		#if desktop
 		// Updating Discord Rich Presence
