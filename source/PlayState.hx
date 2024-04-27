@@ -5420,7 +5420,7 @@ public function callOnLuas(event:String, args:Array<Dynamic>, ignoreStops = true
 				continue;
 
 			var myValue = script.call(event, args);
-			if(myValue == FunkinLua.Function_StopLua && !ignoreStops)
+			if(myValue == FunkinLua.Function_Stop && !ignoreStops)
 				break;
 			
 			if(myValue != null && myValue != FunkinLua.Function_Continue) {
