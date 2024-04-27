@@ -341,11 +341,7 @@ class Paths
 		if (OpenFlAssets.exists(path, IMAGE)) {
 			if(!currentTrackedAssets.exists(path)) {
 			        var newGraphic:FlxGraphic;
-
-				if (ClientPrefs.vramSprites)
-					newGraphic = FlxGraphic.fromBitmapData(GPUFunctions.getBitmaponGPU(path), false, path, false);
-				else
-					newGraphic = FlxG.bitmap.add(path, false, path);
+				newGraphic = FlxG.bitmap.add(path, false, path);
 				newGraphic.persist = true;
 				currentTrackedAssets.set(path, newGraphic);
 			}
