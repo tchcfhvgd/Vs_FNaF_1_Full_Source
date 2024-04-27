@@ -42,7 +42,7 @@ class FlxNewHitbox extends FlxSpriteGroup
 	{
 		super.destroy();
 
-	    buttonLeft = FlxDestroyUtil.destroy(buttonLeft);
+	        buttonLeft = FlxDestroyUtil.destroy(buttonLeft);
 		buttonUp = FlxDestroyUtil.destroy(buttonUp);
 		buttonDown = FlxDestroyUtil.destroy(buttonDown);
 		buttonRight = FlxDestroyUtil.destroy(buttonRight);
@@ -71,8 +71,8 @@ class FlxNewHitbox extends FlxSpriteGroup
 		hint.alpha = 0.00001;
 		hint.onDown.callback = hint.onOver.callback = function()
 		{
-			if (hint.alpha != 0.15)
-				hint.alpha = 0.15;
+			if (hint.alpha != ClientPrefs.hitboxalpha)
+				hint.alpha = ClientPrefs.hitboxalpha;
 		}
 		hint.onUp.callback = hint.onOut.callback = function()
 		{
