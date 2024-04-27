@@ -1158,7 +1158,9 @@ class PlayState extends MusicBeatState
 				startVideo('cutscene2b');
 				case 'walk-the-plank':
 				startVideo('cutscene2p');
-				startCountdown();
+
+				default:
+					startCountdown();
 			}
 			seenCutscene = true;
 		} else {
