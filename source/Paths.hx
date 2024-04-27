@@ -502,3 +502,4 @@ class Paths
 		return list;
 	}
 	#end
+}
