@@ -44,10 +44,6 @@ class Main extends Sprite
 		#elseif ios
 		Sys.setCwd(System.documentsDirectory);
 		#end
-		
-		#if android
-		FlxG.android.preventDefaultKeys = [BACK];
-		#end
 			
 		if (stage != null)
 		{
