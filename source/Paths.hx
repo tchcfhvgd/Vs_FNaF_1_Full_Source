@@ -334,7 +334,7 @@ class Paths
 	}
 
 	inline static public function mods(key:String = '') {
-		return 'mods/' + key;
+		return Sys.getCwd() + 'mods/' + key;
 	}
 	
 	inline static public function modsFont(key:String) {
@@ -380,7 +380,7 @@ class Paths
 				return fileToCheck;
 			}
 		}
-		return 'mods/' + key;
+		return Sys.getCwd() + 'mods/' + key;
 	}
 
 	static public function getModDirectories():Array<String> {
