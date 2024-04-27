@@ -1,4 +1,4 @@
-package mobile;
+package android;
 
 #if desktop
 import Discord.DiscordClient;
