@@ -12,7 +12,6 @@ import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
 #if android
 import flixel.group.FlxGroup;
-import android.FlxHitbox;
 import android.FlxNewHitbox;
 import android.FlxVirtualPad;
 import android.flixel.FlxButton;
@@ -411,15 +410,6 @@ class Controls extends FlxActionSet
 		trackedinputsUI.push(input);
 		action.add(input);
 	}
-
-	public function setHitBox(hitbox:FlxHitbox) 
-	{
-		inline forEachBound(Control.NOTE_UP, (action, state) -> addbuttonuNOTES(action, hitbox.buttonUp, state));
-		inline forEachBound(Control.NOTE_DOWN, (action, state) -> addbuttonuNOTES(action, hitbox.buttonDown, state));
-		inline forEachBound(Control.NOTE_LEFT, (action, state) -> addbuttonuNOTES(action, hitbox.buttonLeft, state));
-		inline forEachBound(Control.NOTE_RIGHT, (action, state) -> addbuttonuNOTES(action, hitbox.buttonRight, state));	
-	}
-	
 	
 	public function setNewHitBox(Hitbox:FlxNewHitbox)
 	{
