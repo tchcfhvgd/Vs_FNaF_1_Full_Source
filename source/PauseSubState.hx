@@ -266,10 +266,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	function regenMenu():Void {
 		for (i in 0...grpMenuShit.members.length) {
-			var obj = grpMenuShit.members[0];
-			obj.kill();
-			grpMenuShit.remove(obj, true);
-			obj.destroy();
+			this.grpMenuShit.remove(this.grpMenuShit.members[0], true);
 		}
 		for (i in 0...menuItems.length) {
 			var item = new Alphabet(0, 70 * i + 30, menuItems[i], true, false);
