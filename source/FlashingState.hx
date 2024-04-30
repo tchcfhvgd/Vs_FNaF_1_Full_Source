@@ -29,11 +29,15 @@ class FlashingState extends MusicBeatState
 			This Mod contains flashing lights, loud\n
 			noises and lots of jumpscares!\n
 			\n
-			Press Esc now",
+			Press B now",
 			32);
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
 		add(warnText);
+	
+	        #if android
+                addVirtualPad(NONE, A_B);
+                #end
 	}
 
 	override function update(elapsed:Float)
