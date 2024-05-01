@@ -6,6 +6,7 @@ import flixel.FlxState;
 import haxe.io.Path;
 import openfl.Assets;
 import openfl.Lib;
+import cpp.vm.Gc;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
@@ -83,9 +84,11 @@ class Main extends Sprite
 				Paths.clearStoredMemory(true);
 				FlxG.bitmap.dumpCache();
 			}
+			clearMajor();
 		});
 		FlxG.signals.postStateSwitch.add(function () {
 			Paths.clearUnusedMemory();
+			clearMajor();
 			Main.skipNextDump = false;
 		});
 		
@@ -98,5 +101,9 @@ class Main extends Sprite
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
+	}
+        public static function clearMajor() {
+		Gc.run(true);
+		Gc.compact();
 	}
 }
