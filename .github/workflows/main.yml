@@ -50,9 +50,9 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib git line https://github.com/mcagabe19-stuff/lime
+          haxelib git lime https://github.com/mcagabe19-stuff/lime
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
-          haxelib install openfl 9.2.0
+          haxelib git openfl https://github.com/beihu235/openfl
           haxelib install flixel 5.3.1
           haxelib install flixel-tools
           haxelib install flixel-ui
@@ -74,7 +74,6 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           haxelib set flixel 5.3.1
-          haxelib set openfl 9.2.0
           haxelib set flixel-addons 3.1.1
 
       - name: Compile
