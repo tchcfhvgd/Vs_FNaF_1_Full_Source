@@ -160,7 +160,7 @@ class CreditsState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (controls.ACCEPT)
+		if (controls.BACK)
 		{
 			if(colorTween != null) {
 				colorTween.cancel();
