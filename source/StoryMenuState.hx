@@ -243,7 +243,7 @@ class StoryMenuState extends MusicBeatState
 				#end
 			        openSubState(new GameplayChangersSubstate());
 			}
-			else if(controls.RESET #if android || virtualpad.buttonY.justPressed #end)
+			else if(controls.RESET #if android || virtualPad.buttonY.justPressed #end)
 			{
 				persistentUpdate = false;
 				#if android
