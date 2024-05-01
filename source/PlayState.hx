@@ -1033,10 +1033,10 @@ class PlayState extends MusicBeatState
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-	    #if android
-		addAndroidControls();
-		androidc.visible = false;
-		#end
+   #if mobile
+   addMobileControls(false);
+   mobileControls.visible = false;
+   #end
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1491,9 +1491,7 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 		var ret:Dynamic = callOnLuas('onStartCountdown', []);
 		if(ret != FunkinLua.Function_Stop) {
-			#if android
-			androidc.visible = true;
-			#end
+			mobileControls.visible = true;
 			generateStaticArrows(0);
 			generateStaticArrows(1);
 			for (i in 0...playerStrums.length) {
