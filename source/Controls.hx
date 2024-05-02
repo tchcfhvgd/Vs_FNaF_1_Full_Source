@@ -629,7 +629,7 @@ class Controls extends FlxActionSet
 				func(_note_downR, JUST_RELEASED);
 			
 			case DODGE:
-				func(_dodge, JUST_PRESSED);
+				func(_dodge, PRESSED);
 			
 			case ACCEPT:
 				func(_accept, JUST_PRESSED);
