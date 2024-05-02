@@ -100,6 +100,7 @@ class OptionsState extends MusicBeatState
 		add(selectorRight);
 
 		changeSelection();
+		PlayState.qqqeb = true;
 		ClientPrefs.saveSettings();
 
 		#if android
