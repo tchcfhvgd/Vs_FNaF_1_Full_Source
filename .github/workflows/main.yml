@@ -25,17 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r21e
-
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -56,14 +50,13 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
+          haxelib git line https://github.com/mcagabe19-stuff/lime
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
-          haxelib git lime https://github.com/mcagabe19-stuff/lime
           haxelib install openfl 9.1.0
-          haxelib install flixel 5.2.2
-          haxelib run lime setup flixel
+          haxelib install flixel 5.3.1
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons 3.0.2
+          haxelib install flixel-addons 3.1.1
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hscript
@@ -72,7 +65,6 @@ jobs:
           haxelib install extension-androidtools
           haxelib install hxcpp-debug-server
           haxelib list
-  
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
@@ -81,14 +73,8 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           haxelib set openfl 9.1.0
-          haxelib set flixel 5.2.2
-          haxelib set flixel-addons 3.0.2
-        env:
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-
-      - name: Free Disk Space
-        run: sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean && docker rmi $(docker image ls -aq) && df -h
-      
+          haxelib set flixel 5.3.1
+          haxelib set flixel-addons 3.1.1
       - name: Compile
         run: haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}"
       
