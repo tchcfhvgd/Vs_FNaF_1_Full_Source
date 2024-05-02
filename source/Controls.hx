@@ -44,6 +44,7 @@ enum abstract Action(String) to String from String
 	var NOTE_RIGHT_R = "note_right-release";
 	var NOTE_DOWN_R = "note_down-release";
 	var ACCEPT = "accept";
+	var DODGE = "dodge";
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
@@ -77,6 +78,7 @@ abstract Action(String) to String from String
 	var NOTE_RIGHT_R = "note_right-release";
 	var NOTE_DOWN_R = "note_down-release";
 	var ACCEPT = "accept";
+	var DODGE = "dodge";
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
@@ -106,6 +108,7 @@ enum Control
 	NOTE_DOWN;
 	RESET;
 	ACCEPT;
+	DODGE;
 	BACK;
 	PAUSE;
 }
@@ -149,6 +152,7 @@ class Controls extends FlxActionSet
 	var _note_rightR = new FlxActionDigital(Action.NOTE_RIGHT_R);
 	var _note_downR = new FlxActionDigital(Action.NOTE_DOWN_R);
 	var _accept = new FlxActionDigital(Action.ACCEPT);
+	var _dodge = new FlxActionDigital(Action.DODGE);
 	var _back = new FlxActionDigital(Action.BACK);
 	var _pause = new FlxActionDigital(Action.PAUSE);
 	var _reset = new FlxActionDigital(Action.RESET);
@@ -282,6 +286,11 @@ class Controls extends FlxActionSet
 	inline function get_NOTE_DOWN_R()
 		return _note_downR.check();
 
+	public var DODGE(get, never):Bool;
+
+	inline function get_DODGE()
+		return _dodge.check();
+	
 	public var ACCEPT(get, never):Bool;
 
 	inline function get_ACCEPT()
@@ -332,6 +341,7 @@ class Controls extends FlxActionSet
 		add(_note_rightR);
 		add(_note_downR);
 		add(_accept);
+		add(_dodge);
 		add(_back);
 		add(_pause);
 		add(_reset);
@@ -371,6 +381,7 @@ class Controls extends FlxActionSet
 		add(_note_rightR);
 		add(_note_downR);
 		add(_accept);
+		add(_dodge);
 		add(_back);
 		add(_pause);
 		add(_reset);
@@ -560,6 +571,7 @@ class Controls extends FlxActionSet
 			case NOTE_LEFT: _note_left;
 			case NOTE_RIGHT: _note_right;
 			case ACCEPT: _accept;
+			case DODGE: _dodge;
 			case BACK: _back;
 			case PAUSE: _pause;
 			case RESET: _reset;
@@ -614,6 +626,10 @@ class Controls extends FlxActionSet
 				func(_note_down, PRESSED);
 				func(_note_downP, JUST_PRESSED);
 				func(_note_downR, JUST_RELEASED);
+			
+			case DODGE:
+				func(_dodge, JUST_PRESSED);
+			
 			case ACCEPT:
 				func(_accept, JUST_PRESSED);
 			case BACK:
@@ -801,7 +817,7 @@ class Controls extends FlxActionSet
 				inline bindKeys(Control.NOTE_DOWN, keysMap.get('note_down'));
 				inline bindKeys(Control.NOTE_LEFT, keysMap.get('note_left'));
 				inline bindKeys(Control.NOTE_RIGHT, keysMap.get('note_right'));
-
+				inline bindKeys(Control.DODGE, [SPACE]);
 				inline bindKeys(Control.ACCEPT, keysMap.get('accept'));
 				inline bindKeys(Control.BACK, keysMap.get('back'));
 				inline bindKeys(Control.PAUSE, keysMap.get('pause'));
@@ -847,6 +863,7 @@ class Controls extends FlxActionSet
 				bindKeys(Control.NOTE_DOWN, [S, FlxKey.DOWN]);
 				bindKeys(Control.NOTE_LEFT, [A, FlxKey.LEFT]);
 				bindKeys(Control.NOTE_RIGHT, [D, FlxKey.RIGHT]);
+				bindKeys(Control.DODGE, [SPACE, FlxKey.DODGE]);
 				bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 				bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 				bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
