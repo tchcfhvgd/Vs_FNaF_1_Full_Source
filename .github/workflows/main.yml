@@ -25,11 +25,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@main
+        id: setup-ndk
+        with:
+          ndk-version: r15c
+
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'zulu'
+          java-version: 11
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -50,11 +56,11 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          
-          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
+          haxelib install hxcpp 4.2.1 > /dev/null
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
           haxelib install flixel 5.2.2
+          haxelib run lime setup flixel
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons 3.0.2
@@ -78,6 +84,9 @@ jobs:
           haxelib set openfl 9.1.0
           haxelib set flixel 5.2.2
           haxelib set flixel-addons 3.0.2
+          haxelib set hxcpp 4.2.1
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Free Disk Space
         run: sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean && docker rmi $(docker image ls -aq) && df -h
