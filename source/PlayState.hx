@@ -111,6 +111,7 @@ class PlayState extends MusicBeatState
 	
 	public var boyfriendGroup:FlxSpriteGroup;
 	public var dadGroup:FlxSpriteGroup;
+	public static var qqqeb:Bool = false;
 	public var gfGroup:FlxSpriteGroup;
 
 	public static var curStage:String = '';
