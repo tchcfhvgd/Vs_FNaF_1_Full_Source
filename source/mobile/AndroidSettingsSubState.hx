@@ -43,6 +43,7 @@ class AndroidSettingsSubState extends BaseOptionsMenu
 			"Choose Space Control Position\nFor Hitbox",
 			'hitboxLocation',
 			'string',
+			'Bottom',
 			['Bottom', 'Middle', 'Top']);
 		  addOption(option);
 		
