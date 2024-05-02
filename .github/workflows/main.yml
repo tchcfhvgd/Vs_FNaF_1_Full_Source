@@ -76,7 +76,7 @@ jobs:
           haxelib set flixel 5.3.1
           haxelib set flixel-addons 3.1.1
       - name: Compile
-        run: haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android
       
       - name: Clear Previous Cache
         uses: actions/github-script@main
