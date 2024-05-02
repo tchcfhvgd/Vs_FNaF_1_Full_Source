@@ -638,6 +638,9 @@ class PlayState extends MusicBeatState
 					add(bgGirls);
 				}
 
+			case 'stage3p':
+				PlayState.qqqeb = true;
+			
 			case 'schoolEvil': //Week 6 - Thorns
 				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-pixel';
 				GameOverSubstate.loopSoundName = 'gameOver-pixel';
@@ -3115,6 +3118,7 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+		PlayState.qqqeb = false;
 
 		deathCounter = 0;
 		seenCutscene = false;
