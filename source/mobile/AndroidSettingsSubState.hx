@@ -39,6 +39,13 @@ class AndroidSettingsSubState extends BaseOptionsMenu
 		title = 'Android Controls Settings';
 		rpcTitle = 'Android Controls Settings Menu'; // hi, you can ask what is that, i will answer it's all what you needed lol.
 
+		var option:Option = new Option('Space Position:',
+			"Choose Space Control Position\nFor Hitbox",
+			'hitboxLocation',
+			'string',
+			['Bottom', 'Middle', 'Top']);
+		  addOption(option);
+		
 		var option:Option = new Option('Vpad Opacity', // mariomaster was here again
 			'Changes Vpad Opacity -yeah ', 'padalpha', 'float', 0.5);
 		option.scrollSpeed = 1.6;
