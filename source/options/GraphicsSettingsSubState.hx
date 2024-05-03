@@ -64,12 +64,11 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeFramerate;
 		#end
 
-		var option:Option = new Option('Persistent Cached Data',
-			'If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.',
-			'imagesPersist',
+		var option:Option = new Option('Prefer GPU Caching',
+			"Uses GPU to cache sprites until VRAM is full, then loads the rest to RAM.\nIt's recommended to leave this checked as 'Vs FNaF 3' benefits from the faster memory speeds of GPUs.",
+			'cacheOnGPU',
 			'bool',
 			false);
-		option.onChange = onChangePersistentData; //Persistent Cached Data changes FlxGraphic.defaultPersist
 		addOption(option);
 		super();
 	}
