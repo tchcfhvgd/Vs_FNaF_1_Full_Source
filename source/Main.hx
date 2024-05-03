@@ -92,7 +92,7 @@ class Main extends Sprite
 			Main.skipNextDump = false;
 		});
 		
-		addChild(fpsVar);
+		FlxG.game.addChild(fpsVar);
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
