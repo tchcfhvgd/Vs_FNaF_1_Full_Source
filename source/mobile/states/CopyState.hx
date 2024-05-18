@@ -1,7 +1,7 @@
 package mobile.states;
 
 #if mobile
-import states.TitleState;
+import TitleState;
 import flixel.addons.transition.FlxTransitionableState;
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenflAssets;
@@ -28,7 +28,7 @@ class CopyState extends MusicBeatState
 	var canUpdate:Bool = true;
 	var shouldCopy:Bool = false;
 
-	static final textFilesExtensions:Array<String> = ['ini', 'txt', 'xml', 'hxs', 'hx', 'lua', 'json', 'frag', 'vert'];
+	static final textFilesExtensions:Array<String> = ['ini', 'txt', 'xml', 'hxs', 'png', 'lua', 'json', 'frag', 'vert'];
 
 	override function create()
 	{
