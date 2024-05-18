@@ -4,6 +4,7 @@ package mobile.states;
 import TitleState;
 import flixel.FlxG;
 import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
 import lime.utils.Assets as LimeAssets;
@@ -14,7 +15,12 @@ import haxe.io.Path;
 #if (target.threaded)
 import sys.thread.Thread;
 #end
+#if sys
+import sys.*;
+import sys.io.*;
+#end
 
+using StringTools;
 class CopyState extends MusicBeatState
 {
 	public static var locatedFiles:Array<String> = [];
