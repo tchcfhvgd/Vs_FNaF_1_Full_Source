@@ -72,33 +72,6 @@ class SUtil
 	}
 
 	#if android
-	public static function doPermissionsShit():Void
-	{
-		if (!AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE')
-			&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.WRITE_EXTERNAL_STORAGE'))
-		{
-			AndroidPermissions.requestPermission('READ_EXTERNAL_STORAGE');
-			AndroidPermissions.requestPermission('WRITE_EXTERNAL_STORAGE');
-			showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress Ok to see what happens',
-				'Notice!');
-			if (!AndroidEnvironment.isExternalStorageManager())
-				AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
-		}
-		else
-		{
-			try
-			{
-				if (!FileSystem.exists(SUtil.getStorageDirectory()))
-					FileSystem.createDirectory(SUtil.getStorageDirectory());
-			}
-			catch (e:Dynamic)
-			{
-				showPopUp('Please create folder to\n' + SUtil.getStorageDirectory(true) + '\nPress OK to close the game', 'Error!');
-				LimeSystem.exit(1);
-			}
-		}
-	}
-
 	public static function checkExternalPaths(?splitStorage = false):Array<String> {
 		var process = new Process('grep -o "/storage/....-...." /proc/mounts | paste -sd \',\'');
 		var paths:String = process.stdout.readAll().toString();
@@ -132,45 +105,4 @@ class SUtil
 	}
 }
 
-#if android
-enum abstract StorageType(String) from String to String
-{
-	final forcedPath = '/storage/emulated/0/';
-	final packageNameLocal = 'com.shadowmario.psychengine';
-	final fileLocal = 'PsychEngine';
-
-	public static function fromStr(str:String):StorageType
-	{
-		final EXTERNAL_DATA = AndroidContext.getExternalFilesDir();
-		final EXTERNAL_OBB = AndroidContext.getObbDir();
-		final EXTERNAL_MEDIA = AndroidEnvironment.getExternalStorageDirectory() + '/Android/media/' + lime.app.Application.current.meta.get('packageName');
-		final EXTERNAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file');
-
-		return switch (str)
-		{
-			case "EXTERNAL_DATA": EXTERNAL_DATA;
-			case "EXTERNAL_OBB": EXTERNAL_OBB;
-			case "EXTERNAL_MEDIA": EXTERNAL_MEDIA;
-			case "EXTERNAL": EXTERNAL;
-			default: SUtil.getExternalDirectory(str) + '.' + fileLocal;
-		}
-	}
-
-	public static function fromStrForce(str:String):StorageType
-	{
-		final EXTERNAL_DATA = forcedPath + 'Android/data/' + packageNameLocal + '/files';
-		final EXTERNAL_OBB = forcedPath + 'Android/obb/' + packageNameLocal;
-		final EXTERNAL_MEDIA = forcedPath + 'Android/media/' + packageNameLocal;
-		final EXTERNAL = forcedPath + '.' + fileLocal;
-
-		return switch (str)
-		{
-			case "EXTERNAL_DATA": EXTERNAL_DATA;
-			case "EXTERNAL_OBB": EXTERNAL_OBB;
-			case "EXTERNAL_MEDIA": EXTERNAL_MEDIA;
-			case "EXTERNAL": EXTERNAL;
-			default: SUtil.getExternalDirectory(str) + '.' + fileLocal;
-		}
-	}
-}
 #end
