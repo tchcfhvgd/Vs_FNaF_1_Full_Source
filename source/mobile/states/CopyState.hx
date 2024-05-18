@@ -2,6 +2,8 @@ package mobile.states;
 
 #if mobile
 import TitleState;
+import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenflAssets;
