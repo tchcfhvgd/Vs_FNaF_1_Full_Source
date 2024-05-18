@@ -97,7 +97,7 @@ class SUtil
 		return daPath;
 	}
 	#end
-	#end
+	
 	public static function showPopUp(message:String, title:String):Void
 	{
 		#if (!ios || !iphonesim)
