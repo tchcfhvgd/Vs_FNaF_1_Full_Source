@@ -12,6 +12,7 @@ import openfl.utils.Assets as OpenflAssets;
 import flixel.addons.util.FlxAsyncLoop;
 import openfl.utils.ByteArray;
 import haxe.io.Path;
+import mobile.backend.SUtil;
 #if (target.threaded)
 import sys.thread.Thread;
 #end
