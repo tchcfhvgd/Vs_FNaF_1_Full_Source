@@ -32,10 +32,11 @@ jobs:
           ndk-version: r21e
 
       - name: Setup Java JDK
+
         uses: actions/setup-java@main
         with:
-          distribution: 'temurin'
-          java-version: '11'
+          distribution: 'zulu'
+          java-version: '18'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
