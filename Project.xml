@@ -154,6 +154,11 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<section if="android">
+			<!--Target SDK-->
+			<android target-sdk-version="29" />
+		</section>
+		
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 	
 	<icon path="art/icon16.png" size='16'/>
