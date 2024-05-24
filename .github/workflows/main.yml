@@ -120,8 +120,10 @@ jobs:
             export/release/android/obj
           key: cache-android-build
       
-      - name: Publish Artifact
+      - name: Upload Artifact
+        if: ${{ success() }}
         uses: actions/upload-artifact@main
         with:
-          name: buildAndroid
+          name: androidBuild
           path: export/release/android/bin/app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
