@@ -25,16 +25,16 @@ class MobileControls extends FlxSpriteGroup
 		switch (MobileControls.mode)
 		{
 			case 'Pad-Right':
-				virtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+				virtualPad = new FlxVirtualPad(RIGHT_FULL, B1);
 				add(virtualPad);
 			case 'Pad-Left':
-				virtualPad = new FlxVirtualPad(LEFT_FULL, NONE);
+				virtualPad = new FlxVirtualPad(LEFT_FULL, B1);
 				add(virtualPad);
 			case 'Pad-Custom':
 				virtualPad = MobileControls.customVirtualPad;
 				add(virtualPad);
 			case 'Pad-Duo':
-				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);
+				virtualPad = new FlxVirtualPad(BOTH_FULL, B1);
 				add(virtualPad);
 			case 'Hitbox':
 				hitbox = new FlxHitbox();
@@ -75,7 +75,7 @@ class MobileControls extends FlxSpriteGroup
 
 	private static function get_customVirtualPad():FlxVirtualPad
 	{
-		var virtualPad:FlxVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+		var virtualPad:FlxVirtualPad = new FlxVirtualPad(RIGHT_FULL, B1);
 		if (FlxG.save.data.buttons == null)
 			return virtualPad;
 
