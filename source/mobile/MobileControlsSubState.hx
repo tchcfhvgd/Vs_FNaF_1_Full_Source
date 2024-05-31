@@ -180,7 +180,7 @@ class MobileControlsSubState extends FlxSubState
 						moveButton(touch, virtualPad.buttonRight);
 					else if (virtualPad.buttonLeft.justPressed)
 						moveButton(touch, virtualPad.buttonLeft);
-					else if (virtualPad.buttonB1.jjustPressed)
+					else if (virtualPad.buttonB1.justPressed)
 						moveButton(touch, virtualPad.buttonB1);
 				}
 			}
