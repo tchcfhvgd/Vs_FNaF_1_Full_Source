@@ -82,8 +82,9 @@ class MobileControls extends FlxSpriteGroup
 		return mode;
 	}
 
-	public static function get_customVirtualPad():FlxVirtualPad
+	private static function get_customVirtualPad():FlxVirtualPad
 	{
+		var virtualPad:FlxVirtualPad;
 		if(PlayState.qqqeb)
 		virtualPad = new FlxVirtualPad(RIGHT_FULL, B1);
 		else
