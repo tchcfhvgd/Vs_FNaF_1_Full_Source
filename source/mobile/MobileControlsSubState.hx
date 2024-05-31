@@ -230,6 +230,7 @@ class MobileControlsSubState extends FlxSubState
 		downPosition.visible = daChoice == 'Pad-Custom';
 		leftPosition.visible = daChoice == 'Pad-Custom';
 		rightPosition.visible = daChoice == 'Pad-Custom';
+		B1Position.visible = daChoice == 'Pad-Custom';
 	}
 
 	private function moveButton(touch:FlxTouch, button:FlxButton):Void
