@@ -7,10 +7,18 @@ import haxe.io.Path;
 import openfl.Assets;
 import mobile.states.CopyState;
 import openfl.Lib;
-import cpp.vm.Gc;
-import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+#if cpp
+import cpp.vm.Gc;
+#elseif hl
+import hl.Gc;
+#elseif java
+import java.vm.Gc;
+#elseif neko
+import neko.vm.Gc;
+#end
+
 #if android
 import android.content.Context;
 import android.os.Build;
@@ -78,7 +86,7 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
-		fpsVar = new FPS(10, 3, 0xFFFFFF);
+		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		
 		FlxG.signals.preStateSwitch.add(function () {
 			if (!Main.skipNextDump) {
@@ -104,7 +112,13 @@ class Main extends Sprite
 		#end
 	}
         public static function clearMajor() {
+		#if cpp
 		Gc.run(true);
 		Gc.compact();
+		#elseif hl
+		Gc.major();
+		#elseif (java || neko)
+		Gc.run(true);
+		#end
 	}
 }
