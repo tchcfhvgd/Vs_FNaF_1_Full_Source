@@ -67,6 +67,9 @@ class MobileControlsSubState extends FlxSubState
 		{
 			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom' && resetButton.visible) // being sure about something
 			{
+				if(PlayState.qqqeb)
+                                MobileControls.customVirtualPad = new FlxVirtualPad(RIGHT_FULL, B1);
+                                else
 				MobileControls.customVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 				reloadMobileControls('Pad-Custom');
 			}
