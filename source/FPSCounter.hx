@@ -1,11 +1,11 @@
-package meta.backend;
+package ;
 
-import meta.data.*;
 import haxe.Timer;
 import openfl.events.Event;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import flixel.math.FlxMath;
+import flixel.FlxG;
 #if flash
 import openfl.Lib;
 #end
