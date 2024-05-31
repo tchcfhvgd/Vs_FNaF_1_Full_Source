@@ -331,13 +331,12 @@ class StoryMenuState extends MusicBeatState
 		if (curDifficulty >= CoolUtil.difficulties.length)
 			curDifficulty = 0;
 
-		var image:Dynamic = Paths.image('menudifficulties/' + Paths.formatToSongPath(CoolUtil.difficulties[curDifficulty]));
-		var newImagePath:String = '';
-			newImagePath = image;
-
-		if(newImagePath != lastImagePath)
+		var diff:String = CoolUtil.difficulties[curDifficulty];
+		var newImage:FlxGraphic = Paths.image('menudifficulties/' + Paths.formatToSongPath(diff));
+		//trace(Paths.currentModDirectory + ', menudifficulties/' + Paths.
+		if(sprDifficulty.graphic != newImage)
 		{
-			sprDifficulty.loadGraphic(image);
+			sprDifficulty.loadGraphic(newImage);
 			sprDifficulty.x = leftArrow.x + 60;
 			sprDifficulty.x += (308 - sprDifficulty.width) / 2;
 			sprDifficulty.alpha = 0;
@@ -349,7 +348,6 @@ class StoryMenuState extends MusicBeatState
 				tweenDifficulty = null;
 			}});
 		}
-		lastImagePath = newImagePath;
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
 		#if !switch
