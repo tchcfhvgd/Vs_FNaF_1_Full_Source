@@ -71,9 +71,9 @@ class MusicBeatState extends FlxUIState
 			switch (MobileControls.mode)
 			{
 				case 'Pad-Right' | 'Pad-Left' | 'Pad-Custom':
-				controls.setVirtualPadNOTES(mobileControls.virtualPad, RIGHT_FULL, NONE);
+				controls.setVirtualPadNOTES(mobileControls.virtualPad, RIGHT_FULL, B1);
 				case 'Pad-Duo':
-				controls.setVirtualPadNOTES(mobileControls.virtualPad, BOTH_FULL, NONE);
+				controls.setVirtualPadNOTES(mobileControls.virtualPad, BOTH_FULL, B1);
 				case 'Hitbox':
 				controls.setHitBox(mobileControls.hitbox);
 				case 'Keyboard': // do nothing
