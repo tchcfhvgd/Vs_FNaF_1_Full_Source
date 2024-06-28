@@ -125,6 +125,7 @@ jobs:
           if-no-files-found: error
 
   Releaser:
+    needs: buildAndroid
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
