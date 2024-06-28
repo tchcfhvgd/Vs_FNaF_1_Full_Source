@@ -135,7 +135,7 @@ jobs:
            path: /home/runner
 
       - name: Move Android File
-        run: mv /home/runner/PsychEngine-release.apk /home/runner/PsychEngine-Android.apk
+        run: mv /home/runner/Vs FNaF 1-release.apk /home/runner/Vs FNaF 1-Android.apk
 
       - name: Publish The Release
         uses: marvinpinto/action-automatic-releases@latest
