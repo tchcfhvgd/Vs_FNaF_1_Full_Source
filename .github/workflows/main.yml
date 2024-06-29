@@ -123,28 +123,3 @@ jobs:
           name: androidBuild
           path: export/release/android/bin/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
-
-  Releaser:
-    needs: buildAndroid
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
-      - name: Download Android Build
-        uses: actions/download-artifact@main
-        with:
-           name: androidBuild
-           path: /home/runner
-
-      - name: Move Android File
-        run: mv /home/runner/Vs FNaF 1-release.apk /home/runner/Vs FNaF 1-Android.apk
-
-      - name: Publish The Release
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: "vs_fnaf1"
-          title: "vs_fnaf1"
-          files: |
-            /home/runner/*.apk
-            /home/runner/*.zip
