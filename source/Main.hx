@@ -9,15 +9,6 @@ import mobile.states.CopyState;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.events.Event;
-#if cpp
-import cpp.vm.Gc;
-#elseif hl
-import hl.Gc;
-#elseif java
-import java.vm.Gc;
-#elseif neko
-import neko.vm.Gc;
-#end
 
 #if android
 import android.content.Context;
@@ -98,11 +89,9 @@ class Main extends Sprite
 				Paths.clearStoredMemory(true);
 				FlxG.bitmap.dumpCache();
 			}
-			clearMajor();
 		});
 		FlxG.signals.postStateSwitch.add(function () {
 			Paths.clearUnusedMemory();
-			clearMajor();
 			Main.skipNextDump = false;
 		});
 		
@@ -114,16 +103,6 @@ class Main extends Sprite
 		#if html5
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
-		#end
-	}
-        public static function clearMajor() {
-		#if cpp
-		Gc.run(true);
-		Gc.compact();
-		#elseif hl
-		Gc.major();
-		#elseif (java || neko)
-		Gc.run(true);
 		#end
 	}
 }
